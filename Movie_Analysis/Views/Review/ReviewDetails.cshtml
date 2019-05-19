@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Movie_Analysis.Models.MovieReviewModel.MovieReviewModel>
+
+@{
+    ViewData["Title"] = "ReviewDetails";
+        var returnUrl = new Dictionary<string, string>
+        {
+            { "returnUrl",  $"/review/reviewdetails/{ViewBag.MovieId}"}
+        };
+}
+
+<h2>ReviewDetails</h2>
+
+
+<div class="row">
+    @Html.Partial("_Movieimage", ViewBag.Movie as Movie_Analysis.Models.MovieModel.MovieModel)
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <form asp-action="SaveReview" method="post">
+
+            <div class="col-md-6">
+
+                <input type="hidden" id="movieId" name="movieId" value="@ViewBag.MovieId" />
+                <textarea id="review" class="form-control" name="review" rows="5" cols="150" style="color:black;margin-top:10px;" placeholder="Post Your Review"></textarea><br/>
+                <input type="text" id="rate" class="form-control" name="rate" placeholder="Rate it out of 5 Stars." width="20"/>
+                <br />
+
+                <input type="submit" value="Post Review" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <p style="font:30px;font-family:Verdana;color:yellowgreen;">To add review you must login.Click to Login.</p>
+<a asp-action="Login" asp-controller="Account" asp-all-route-data="@returnUrl">Click here to Login</a>
+}
+
+
+<h1>User Reviews</h1><hr />
+<div class="row">
+    <div class="col-md-10">
+        @foreach (var item in Model)
+        {
+
+        <div>
+            <p style="font:50px;font-family:Verdana;">
+                "@Html.DisplayFor(modelItem => item.Review)"</p>
+                @if (ViewBag.UserId == item.UserId)
+        {
+            <p style="font:50px;font-family:Verdana;">Rating: @Html.DisplayFor(modelItem=>item.Rating) stars</p>
+            <a asp-action="EditReview" asp-route-id="@item.Id">Edit</a>
+            }
+        
+        <h2 align="right">-Reviewed by :- @Html.DisplayFor(modelItem => item.User.Email) </h2>
+        <br />
+        </div>
+
+
+
+
+
+
+        }
+
+
+
+
+    </div>
+</div>
+
+@*<table class="table">
+
+
+
+
+
+
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>*@
+@*<th>
+        @Html.DisplayNameFor(model => model.Rating)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CreatedDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ModifiedDate)
+    </th>*@
+@*<th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }*@
+
+

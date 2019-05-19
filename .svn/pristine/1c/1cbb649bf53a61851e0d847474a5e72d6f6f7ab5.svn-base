@@ -1,0 +1,6 @@
+@using Microsoft.AspNetCore.Identity
+@using Movie_Analysis
+@using Movie_Analysis.Models
+@using Movie_Analysis.Models.AccountViewModels
+@using Movie_Analysis.Models.ManageViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

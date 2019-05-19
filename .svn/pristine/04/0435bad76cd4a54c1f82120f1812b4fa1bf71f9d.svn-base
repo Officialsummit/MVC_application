@@ -1,0 +1,33 @@
+﻿@model Movie_Analysis.Models.MovieModel.MovieModel
+
+<div>
+    <div class="col-md-5">
+        <a asp-action="ReviewDetails" asp-controller="Review" asp-route-id="@Model.Id"><img src="/@Model.Image"/></a>
+    </div>
+    <div class="col-md-7">
+        <table >
+            
+
+            <tr>
+                <td colspan="4" style="width:30%; color:aliceblue;padding:inherit;font-size:120%;padding-bottom:5%">Movie Name </td>
+                <td colspan="4" align="center" style="width:30%; color:aliceblue;padding:inherit;font-size:120%;padding-bottom:5%">:</td>
+                <td colspan="2" align="right" style="width:30%; color:aliceblue;padding:inherit;font-size:120% ; padding-bottom:5%">@Html.DisplayFor(modelItem => modelItem.Title)</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="width:30%; color:aliceblue;padding:inherit;font-size:120%; padding-bottom:5%">Movie Language </td>
+                <td colspan="4" align="center" style="width:30%; color:aliceblue;padding:inherit;font-size:120%;padding-bottom:5%">:</td>
+                <td colspan="2" align="right" style="width:30%; color:aliceblue;padding:inherit;font-size:120% ; padding-bottom:5%">@Html.DisplayFor(modelItem => modelItem.Language)</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="width:30%; color:aliceblue;padding:inherit;font-size:120%; padding-bottom:5%">Budget </td>
+                <td colspan="4" align="center" style="width:30%; color:aliceblue;padding:inherit;font-size:120%;padding-bottom:5%">:</td>
+                <td colspan="2" align="right" style="width:30%; color:aliceblue;padding:inherit;font-size:120%; padding-bottom:5%">@Html.DisplayFor(modelItem => modelItem.Budget)</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="width:30%; color:aliceblue;padding:inherit;font-size:120%; padding-bottom:5%">IMDBScore </td>
+                <td colspan="4" align="center" style="width:30%; color:aliceblue;padding:inherit;font-size:120%;padding-bottom:5%">:</td>
+                <td colspan="2" align="right" style="width:30%; color:aliceblue;padding:inherit;font-size:120%; padding-bottom:5%">@Html.DisplayFor(modelItem => modelItem.IMDBScore)</td>
+            </tr>
+        </table>
+</div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Movie_Analysis.Models.MovieReviewModel.MovieReviewModel>
+
+@{
+    ViewData["Title"] = "ReviewDetails";
+}
+
+<h2>ReviewDetails</h2>
+
+
+<div class="row">
+    @Html.Partial("_Movieimage", ViewBag.Movie as Movie_Analysis.Models.MovieModel.MovieModel)
+</div>
+
+<div class="row">
+    <form asp-action="SaveReview" method="post">
+
+        <div class="col-md-6">
+            
+            <input type="hidden" id="movieId" name="movieId" value="@ViewBag.MovieId" />
+            <textarea id="review" name="review" rows="5" cols="40" style="color:black;margin-top:10px;" placeholder="Post Your Review"></textarea>
+
+
+            <input type="submit" value="Post Review" class="btn-success" />
+        </div>
+    </form>
+</div>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model )
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

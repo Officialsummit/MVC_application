@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Movie_Analysis.Data;
+using Movie_Analysis.Models;
+using Movie_Analysis.Models.AccountViewModels;
+using Movie_Analysis.Models.MovieReviewModel;
+
+namespace Movie_Analysis.Controllers
+{
+    public class ReviewController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        private readonly ApplicationDbContext _context;
+        
+        public ReviewController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> ReviewDetails(int id)
+        {
+            ViewBag.Movie = await _context.Movie.FirstAsync(m => m.Id == id);
+            ViewBag.MovieId = id;
+            return View(await _context.Review.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveReview(int movieId, string review)
+        {
+            MovieReviewModel movieReviewModel = new MovieReviewModel();
+            movieReviewModel.UserId = "94139978-5d60-401c-aefd-0c5e7d2e43ff";
+            movieReviewModel.Rating = 2;
+            movieReviewModel.MovieId = movieId;
+            movieReviewModel.Review = review;
+            movieReviewModel.CreatedDate = DateTime.Now;
+            movieReviewModel.ModifiedDate = DateTime.Now;
+
+            _context.Add(movieReviewModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(ReviewDetails), new { @id = movieId });
+        }
+      
+       
+
+    }
+}

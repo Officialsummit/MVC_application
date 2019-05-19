@@ -1,0 +1,13 @@
+CREATE TABLE [dbo].[Review] (
+    [Id]           NVARCHAR (450) NOT NULL,
+    [MovieId]      NVARCHAR (450) NOT NULL,
+    [UserId]       NVARCHAR (450) NOT NULL,
+    [Review]       NVARCHAR (MAX) NOT NULL,
+    [Rating]       FLOAT (53)     NOT NULL,
+    [CreatedDate]  DATETIME       NOT NULL,
+    [ModifiedDate] DATETIME       NOT NULL,
+    CONSTRAINT [PK_Review] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Review_Movie] FOREIGN KEY ([MovieId]) REFERENCES [dbo].[Movie] ([Id]),
+    CONSTRAINT [FK_Review_AspNetUsers] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id])
+);
+

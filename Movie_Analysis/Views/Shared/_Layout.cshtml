@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Movie_Analysis</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
+    </environment>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/csss/ie6.css" rel="stylesheet" />
+        <link href="~/csss/style.css" rel="stylesheet" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+
+    <div id="shell">
+        <div id="header">
+            <h1 ><a href="#">Movie Analysis</a></h1>
+            <div class="social">
+                <span>FOLLOW US ON:</span>
+                <ul>
+                    <li><a class="twitter" href="#">twitter</a></li>
+                    <li><a class="facebook" href="#">facebook</a></li>
+                    <li><a class="vimeo" href="#">vimeo</a></li>
+                    <li><a class="rss" href="#">rss</a></li>
+                </ul>
+            </div>
+            <div id="navigation">
+                <ul>
+                    <li><a class="active" href="#">HOME</a></li>
+                    <li><a href="#">NEWS</a></li>
+                    <li><a href="#">IN THEATERS</a></li>
+                    <li><a href="#">COMING SOON</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">ADVERTISE</a></li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+            <div id="sub-navigation">
+                <ul>
+                    <li><a href="#">SHOW ALL</a></li>
+                    <li><a href="#">LATEST TRAILERS</a></li>
+                    <li><a href="#">TOP RATED</a></li>
+                    <li><a href="#">MOST COMMENTED</a></li>
+                </ul>
+                <div id="search">
+                    <form action="#" method="get" accept-charset="utf-8">
+                        <label for="search-field">SEARCH</label>
+                        <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field" />
+                        <input type="submit" value="GO!" class="search-button" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - Movie_Analysis</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/jss/jquery-1.4.2.min.js"></script>
+        <script src="~/jss/jquery-func.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <environment include="Development">
+        <script src="~/lib/js/jquery-3.3.7.js"></script>
+        <script src="~/lib/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/js/jquery-3.3.7.min.js"></script>
+        <script src="~/lib/js/bootstrap.bundle.min.js"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
